@@ -1,0 +1,19 @@
+# Apache Polaris (Iceberg REST catalog) running locally.
+#   docker compose up -d polaris        then        bash scripts/polaris_bootstrap.sh
+# Values come from .env (never commit .env).
+services:
+  polaris:
+    image: apache/polaris:${POLARIS_IMAGE_TAG:-latest}
+    container_name: polaris
+    ports:
+      - "8181:8181"   # Iceberg REST + management API
+      - "8182:8182"   # health / metrics
+    environment:
+      # Bootstrap the 'root' principal: realm,client_id,client_secret
+      POLARIS_BOOTSTRAP_CREDENTIALS: POLARIS,${POLARIS_ROOT_CLIENT_ID},${POLARIS_ROOT_CLIENT_SECRET}
+      polaris.realm-context.realms: POLARIS
+      quarkus.otel.sdk.disabled: "true"
+      # Polaris uses these keys ONLY to assume taxi-polaris-storage-role (least privilege).
+      AWS_ACCESS_KEY_ID: ${POLARIS_AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${POLARIS_AWS_SECRET_ACCESS_KEY}
+      AWS_REGION: ${AWS_REGION}

@@ -1,0 +1,18 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "IcebergTablesInGlueCatalog_OnlyNeededIfCATALOG_TYPE_glue",
+      "Effect": "Allow",
+      "Action": [
+        "glue:GetDatabase", "glue:GetDatabases", "glue:CreateDatabase",
+        "glue:GetTable", "glue:GetTables", "glue:CreateTable", "glue:UpdateTable", "glue:DeleteTable"
+      ],
+      "Resource": [
+        "arn:aws:glue:${AWS_REGION}:${ACCOUNT_ID}:catalog",
+        "arn:aws:glue:${AWS_REGION}:${ACCOUNT_ID}:database/nyc_taxi",
+        "arn:aws:glue:${AWS_REGION}:${ACCOUNT_ID}:table/nyc_taxi/*"
+      ]
+    }
+  ]
+}

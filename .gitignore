@@ -1,0 +1,23 @@
+# secrets - never commit
+.env
+*.pem
+.aws/
+credentials
+
+# python / spark
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+spark-warehouse/
+metastore_db/
+derby.log
+*.egg-info/
+
+# local data + generated files
+data/
+build/
+.DS_Store
+.idea/
+.vscode/
