@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import logging
 
+from pyspark import StorageLevel
 from pyspark.sql import DataFrame, SparkSession
 from pyspark.sql import functions as F
 
@@ -106,8 +107,8 @@ def run(cfg: Config) -> None:
     rejected = rejected.withColumn("source_file", F.lit(source_file)).withColumn("rejected_at", load_ts)
 
     # Cache so the counts below and the MERGEs don't re-read S3 several times.
-    clean = clean.cache()
-    rejected = rejected.cache()
+    clean = clean.persist(StorageLevel.DISK_ONLY)
+    rejected = rejected.persist(StorageLevel.DISK_ONLY)
     raw_count = raw_trips.count()
     clean_count = clean.count()
     rejected_count = rejected.count()
