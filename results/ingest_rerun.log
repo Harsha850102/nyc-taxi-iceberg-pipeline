@@ -1,0 +1,9 @@
+PYTHONPATH=src python -m pipeline.ingest
+2026-11-16 20:38:39,035 INFO botocore.credentials: Found credentials in shared credentials file: ~/.aws/credentials
+2026-11-16 20:38:39,531 INFO ingest: Downloading https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2025-01.parquet
+2026-11-16 20:38:53,920 INFO ingest: Downloaded 59.2 MB
+2026-11-16 20:38:54,322 INFO ingest: SKIP  s3://harsha-nyc-taxi-lake-2025/raw/yellow_trips/year=2025/month=01/yellow_tripdata_2025-01.parquet (already present, same sha256)
+2026-11-16 20:38:54,322 INFO ingest: Downloading https://d37ci6vzurychx.cloudfront.net/misc/taxi_zone_lookup.csv
+2026-11-16 20:38:54,447 INFO ingest: Downloaded 0.0 MB
+2026-11-16 20:38:54,511 INFO ingest: SKIP  s3://harsha-nyc-taxi-lake-2025/raw/taxi_zones/taxi_zone_lookup.csv (already present, same sha256)
+2026-11-16 20:38:54,518 INFO ingest: Ingest finished. Raw files are under s3://harsha-nyc-taxi-lake-2025/raw/
