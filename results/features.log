@@ -1,0 +1,73 @@
+PYTHONPATH=src python -m pipeline.iceberg_features
+26/11/16 19:00:29 WARN Utils: Your hostname, DESKTOP-74HAELU resolves to a loopback address: 127.0.1.1; using 10.255.255.254 instead (on interface lo)
+26/11/16 19:00:29 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+:: loading settings :: url = jar:file:/home/harsha_alladi/nyc-taxi-iceberg-pipeline/.venv/lib/python3.11/site-packages/pyspark/jars/ivy-2.5.1.jar!/org/apache/ivy/core/settings/ivysettings.xml
+Ivy Default Cache set to: /home/harsha_alladi/.ivy2/cache
+The jars for the packages stored in: /home/harsha_alladi/.ivy2/jars
+org.apache.iceberg#iceberg-spark-runtime-3.5_2.12 added as a dependency
+org.apache.iceberg#iceberg-aws-bundle added as a dependency
+org.apache.hadoop#hadoop-aws added as a dependency
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-39ca344c-f3a3-4f6a-a2e7-09afad9ceb7b;1.0
+	confs: [default]
+	found org.apache.iceberg#iceberg-spark-runtime-3.5_2.12;1.9.2 in central
+	found org.apache.iceberg#iceberg-aws-bundle;1.9.2 in central
+	found org.apache.hadoop#hadoop-aws;3.3.4 in central
+	found com.amazonaws#aws-java-sdk-bundle;1.12.262 in central
+	found org.wildfly.openssl#wildfly-openssl;1.0.7.Final in central
+:: resolution report :: resolve 288ms :: artifacts dl 16ms
+	:: modules in use:
+	com.amazonaws#aws-java-sdk-bundle;1.12.262 from central in [default]
+	org.apache.hadoop#hadoop-aws;3.3.4 from central in [default]
+	org.apache.iceberg#iceberg-aws-bundle;1.9.2 from central in [default]
+	org.apache.iceberg#iceberg-spark-runtime-3.5_2.12;1.9.2 from central in [default]
+	org.wildfly.openssl#wildfly-openssl;1.0.7.Final from central in [default]
+	---------------------------------------------------------------------
+	|                  |            modules            ||   artifacts   |
+	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+	---------------------------------------------------------------------
+	|      default     |   5   |   0   |   0   |   0   ||   5   |   0   |
+	---------------------------------------------------------------------
+:: retrieving :: org.apache.spark#spark-submit-parent-39ca344c-f3a3-4f6a-a2e7-09afad9ceb7b
+	confs: [default]
+	0 artifacts copied, 5 already retrieved (0kB/6ms)
+26/11/16 19:00:30 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/11/16 19:00:35 WARN AuthManagers: Inferring rest.auth.type=oauth2 since property credential was provided. Please explicitly set rest.auth.type to avoid this warning.
+26/11/16 19:00:36 WARN OAuth2Manager: Iceberg REST client is missing the OAuth2 server URI configuration and defaults to http://localhost:8181/api/catalog/v1/oauth/tokens. This automatic fallback will be removed in a future Iceberg release.It is recommended to configure the OAuth2 endpoint using the 'oauth2-server-uri' property to be prepared. This warning will disappear if the OAuth2 endpoint is explicitly configured. See https://github.com/apache/iceberg/issues/10537
+[Stage 0:>                                                          (0 + 1) / 1]                                                                                [Stage 10:>                                                        (0 + 8) / 14][Stage 10:====================>                                    (5 + 8) / 14][Stage 10:================================>                        (8 + 6) / 14][Stage 10:====================================>                    (9 + 5) / 14][Stage 10:====================================================>   (13 + 1) / 14]                                                                                26/11/16 19:00:50 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
+[Stage 13:>                                                        (0 + 8) / 14][Stage 13:====>                                                    (1 + 8) / 14][Stage 13:========>                                                (2 + 8) / 14][Stage 13:============>                                            (3 + 8) / 14][Stage 13:================>                                        (4 + 8) / 14][Stage 13:====================>                                    (5 + 8) / 14][Stage 13:========================>                                (6 + 8) / 14][Stage 13:============================>                            (7 + 7) / 14][Stage 13:================================>                        (8 + 6) / 14][Stage 13:====================================>                    (9 + 5) / 14][Stage 13:========================================>               (10 + 4) / 14][Stage 13:============================================>           (11 + 3) / 14][Stage 13:================================================>       (12 + 2) / 14][Stage 13:====================================================>   (13 + 1) / 14][Stage 15:>                                                        (0 + 8) / 11][Stage 15:=====>                                                   (1 + 8) / 11][Stage 15:==========>                                              (2 + 8) / 11][Stage 15:====================>                                    (4 + 7) / 11][Stage 15:=========================>                               (5 + 6) / 11][Stage 15:===============================>                         (6 + 5) / 11][Stage 15:====================================>                    (7 + 4) / 11][Stage 15:=========================================>               (8 + 3) / 11][Stage 15:==============================================>          (9 + 2) / 11][Stage 15:==================================================>     (10 + 1) / 11]                                                                                [Stage 23:>                                                        (0 + 8) / 14][Stage 23:========>                                                (2 + 8) / 14][Stage 23:====================>                                    (5 + 8) / 14][Stage 23:========================>                                (6 + 8) / 14][Stage 23:================================>                        (8 + 6) / 14][Stage 23:====================================================>   (13 + 1) / 14]                                                                                2026-11-16 19:02:34,965 INFO iceberg_features: Report saved to results/iceberg_features_report.txt
+2026-11-16 19:02:35,482 INFO py4j.clientserver: Closing down clientserver connection
+=== Snapshot history of lake.nyc_taxi.trips_clean BEFORE changes ===
++-----------------------+-------------------+-------------------+---------+
+|committed_at           |snapshot_id        |parent_id          |operation|
++-----------------------+-------------------+-------------------+---------+
+|2026-11-17 00:51:41.344|5285061763929172502|NULL               |append   |
+|2026-11-17 00:52:45.233|7037133619310450089|5285061763929172502|append   |
+|2026-11-17 00:57:15.265|3832457422513019296|7037133619310450089|append   |
++-----------------------+-------------------+-------------------+---------+
+
+=== Schema evolution: ADD COLUMN is_airport_trip ===
+Data files before ALTER: 31, after: 31, identical: True
+Snapshots before ALTER: 3, after: 3 (ALTER only writes a new metadata.json, no data rewrite)
++-------+------------------------+
+|rows   |non_null_is_airport_trip|
++-------+------------------------+
+|3329565|0                       |
++-------+------------------------+
+
+=== Backfill is_airport_trip (UPDATE creates a new snapshot) ===
+=== Time travel: before vs after the change ===
+Snapshot BEFORE change: 3832457422513019296  rows = 3,329,565  (is_airport_trip column did not exist)
+Snapshot AFTER  change: 5479344365318119870  rows = 3,329,565  is_airport_trip = true: 281,469
+Row count unchanged by the change: True
+
+=== Row count at every snapshot ===
+2026-11-16 18:51:41.344000  5285061763929172502  append     rows = 0
+2026-11-16 18:52:45.233000  7037133619310450089  append     rows = 3,329,565
+2026-11-16 18:57:15.265000  3832457422513019296  append     rows = 3,329,565
+2026-11-16 19:02:27.656000  5479344365318119870  overwrite  rows = 3,329,565
+
+Example time-travel SQL:
+  SELECT count(*) FROM lake.nyc_taxi.trips_clean VERSION AS OF 3832457422513019296;
+  SELECT count(*) FROM lake.nyc_taxi.trips_clean TIMESTAMP AS OF '<committed_at of a snapshot>';
