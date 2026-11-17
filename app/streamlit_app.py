@@ -9,6 +9,7 @@ Hosted:  Streamlit Community Cloud -> New app -> this repo -> app/streamlit_app.
 import json
 from pathlib import Path
 
+import altair as alt
 import pandas as pd
 import streamlit as st
 
@@ -39,7 +40,16 @@ tab1, tab2, tab3, tab4 = st.tabs(
 with tab1:
     df = load("q1_top10_revenue_zones.csv")
     if df is not None:
-        st.bar_chart(df, x="pickup_zone", y="total_revenue", horizontal=True)
+        chart = (
+            alt.Chart(df)
+            .mark_bar()
+            .encode(
+                x=alt.X("total_revenue:Q", title="Total revenue ($)"),
+                y=alt.Y("pickup_zone:N", sort="-x", title=None),
+                tooltip=["pickup_zone", "pickup_borough", "trips", "total_revenue", "revenue_per_trip"],
+            )
+        )
+        st.altair_chart(chart)
         st.dataframe(df, hide_index=True, width="stretch")
 
 with tab2:
