@@ -1,0 +1,80 @@
+[
+  {
+    "name": "not_null_keys",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 rows with NULL trip_id / pickup / dropoff / pickup_date"
+  },
+  {
+    "name": "unique_trip_id",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 duplicate trip_id values"
+  },
+  {
+    "name": "fare_amount_positive",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 rows with fare_amount <= 0"
+  },
+  {
+    "name": "dropoff_not_before_pickup",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 rows with dropoff before pickup"
+  },
+  {
+    "name": "pickup_within_month",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 rows with pickup outside [2025-01-01, 2025-02-01)"
+  },
+  {
+    "name": "reject_reason_valid",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 rejected rows with a missing/unknown reject_reason"
+  },
+  {
+    "name": "reconciliation_raw_eq_clean_plus_rejected",
+    "severity": "error",
+    "passed": true,
+    "detail": "raw=3,475,226 clean=3,329,565 rejected=145,661 diff=0"
+  },
+  {
+    "name": "metrics_trips_match_clean",
+    "severity": "error",
+    "passed": true,
+    "detail": "sum(trips) in metrics=3,329,565 vs rows in trips_clean=3,329,565"
+  },
+  {
+    "name": "metrics_revenue_match_clean",
+    "severity": "error",
+    "passed": true,
+    "detail": "metrics=90,330,278.88 clean=90,330,278.88 diff=0.00"
+  },
+  {
+    "name": "zone_lookup_coverage",
+    "severity": "warn",
+    "passed": true,
+    "detail": "0 rows (0.000%) without a zone name (threshold 1%)"
+  },
+  {
+    "name": "plausible_speed",
+    "severity": "warn",
+    "passed": false,
+    "detail": "846 rows with avg_mph > 100"
+  },
+  {
+    "name": "plausible_trip_length",
+    "severity": "warn",
+    "passed": false,
+    "detail": "18 rows longer than 24 hours"
+  },
+  {
+    "name": "non_negative_amounts",
+    "severity": "warn",
+    "passed": true,
+    "detail": "0 rows with negative tip or total"
+  }
+]
